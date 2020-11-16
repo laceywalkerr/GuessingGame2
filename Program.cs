@@ -6,10 +6,10 @@ namespace GuessingGame2
     {
         static void Main(string[] args)
         {
-            int secretNumber = 42;
-            // Console.WriteLine(secretNumber);
+            int secretNumber = new Random().Next(1, 100);
+            Console.WriteLine(secretNumber);
 
-            int attempts = 4;
+            int attempts = 5;
 
             for (int i = 0; i < attempts; i++)
             {
