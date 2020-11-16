@@ -13,7 +13,6 @@ namespace GuessingGame2
 
             for (int i = 0; i < attempts; i++)
             {
-
                 Console.Write($"Can you guess the number I'm thinking of? You have { attempts - i - 1} guesses to get it right! ");
                 int userNumber = Convert.ToInt32(Console.ReadLine());
                 Console.WriteLine($"Number guessed: {userNumber}");
@@ -32,10 +31,8 @@ namespace GuessingGame2
                     {
                         Console.WriteLine("Try guessing a little lower!");
                     }
-
                 }
             }
-
         }
     }
 }
