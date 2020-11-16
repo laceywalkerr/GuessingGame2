@@ -24,7 +24,15 @@ namespace GuessingGame2
                 }
                 else if (secretNumber != userNumber)
                 {
-                    Console.WriteLine("Uhmm.. nah man. Try again.");
+                    if (userNumber < secretNumber)
+                    {
+                        Console.WriteLine("Try guessing a little higher!");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Try guessing a little lower!");
+                    }
+
                 }
             }
 
