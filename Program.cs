@@ -7,7 +7,7 @@ namespace GuessingGame2
         static void Main(string[] args)
         {
             int secretNumber = 42;
-            Console.WriteLine(secretNumber);
+            // Console.WriteLine(secretNumber);
 
             int attempts = 4;
 
@@ -16,10 +16,11 @@ namespace GuessingGame2
 
                 Console.Write($"Can you guess the number I'm thinking of? You have { attempts - i - 1} guesses to get it right! ");
                 int userNumber = Convert.ToInt32(Console.ReadLine());
-                // Console.WriteLine($"You guessed {userNumber}? Oh, Okay.");
+                Console.WriteLine($"Number guessed: {userNumber}");
                 if (secretNumber == userNumber)
                 {
                     Console.WriteLine("SUCCESS! You got it, dude!");
+                    break;
                 }
                 else if (secretNumber != userNumber)
                 {
