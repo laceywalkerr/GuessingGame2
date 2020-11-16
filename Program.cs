@@ -9,15 +9,13 @@ namespace GuessingGame2
             int secretNumber = new Random().Next(1, 101);
             Console.WriteLine(secretNumber);
 
-            // int attempts = 5;
             int attempts = 0;
 
-            // for (int i = 0; i < attempts; i++)
             while (attempts < 4)
             {
                 // the $ in front of the string to summon the info is a "string interpolation"
                 Console.Write($"Can you guess the number I'm thinking of? You have { attempts + 1} guesses to get it right! ");
-                // {attempts - i - 1 }
+
                 int userNumber = Convert.ToInt32(Console.ReadLine());
                 Console.WriteLine($"Number guessed: {userNumber}");
 
@@ -40,5 +38,35 @@ namespace GuessingGame2
                 }
             }
         }
+
+        static int GetNumberOfAttempts()
+        {
+            int attempts = 0;
+            attempts = GetNumberOfAttempts();
+
+            while (attempts == 0)
+            {
+                Console.Write("What difficulty would you like to select? (easy, medium, hard)");
+                string userResponse = Console.ReadLine().ToLower();
+
+                switch (userResponse)
+                {
+                    case ("easy"):
+                        attempts = 8;
+                        break;
+
+                    case ("medium"):
+                        attempts = 6;
+                        break;
+
+                    case ("hard"):
+                        attempts = 4;
+                        break;
+                    default:
+                }
+            }
+            return GetNumberOfAttempts;
+        }
     }
+
 }
