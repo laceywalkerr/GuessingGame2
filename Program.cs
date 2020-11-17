@@ -7,17 +7,17 @@ namespace GuessingGame2
         static void Main(string[] args)
         {
             int secretNumber = new Random().Next(1, 101);
-            Console.WriteLine($"TESTING NUMBER: {secretNumber}");
-
             int attempts = 0;
             int attemptsAllowed = GetNumberOfAttempts();
+
+            Console.WriteLine($"TESTING NUMBER: {secretNumber}");
 
             while (attempts < attemptsAllowed || attemptsAllowed == -1)
             {
                 // the $ in front of the string to summon the info is a "string interpolation"
-                Console.Write($"Can you guess the number I'm thinking of? You have { attempts + 1} guesses to get it right! ");
-
-                int userNumber = Convert.ToInt32(Console.ReadLine());
+                Console.Write($"Can you guess the number I'm thinking of? You have ({ attemptsAllowed - 1}) guesses to get it right!  ");
+                string userResponse = Console.ReadLine();
+                int userNumber = int.Parse(userResponse);
                 Console.WriteLine($"Number guessed: {userNumber}");
 
                 // the code below is an example of a conditional
@@ -44,8 +44,6 @@ namespace GuessingGame2
         static int GetNumberOfAttempts()
         {
             int attempts = 0;
-            attempts = GetNumberOfAttempts();
-
             while (attempts == 0)
             {
                 Console.Write("What difficulty would you like to select? (easy, medium, hard)");
@@ -65,9 +63,9 @@ namespace GuessingGame2
                         attempts = 4;
                         break;
 
-                    case ("cheater"):
-                        attempts = -1;
-                        break;
+                        // case ("cheater"):
+                        //     attempts = -1;
+                        //     break;
 
                     default:
                         break;
