@@ -6,17 +6,21 @@ namespace GuessingGame2
     {
         static void Main(string[] args)
         {
-            int secretNumber = new Random().Next(1, 100);
-            Console.WriteLine(secretNumber);
+            int secretNumber = new Random().Next(1, 101);
+            int attempts = 0;
+            int attemptsAllowed = GetNumberOfAttempts();
 
-            int attempts = 5;
+            Console.WriteLine($"TESTING NUMBER: {secretNumber}");
 
-            for (int i = 0; i < attempts; i++)
+            while (attempts < attemptsAllowed || attemptsAllowed == -1)
             {
-
-                Console.Write($"Can you guess the number I'm thinking of? You have { attempts - i - 1} guesses to get it right! ");
-                int userNumber = Convert.ToInt32(Console.ReadLine());
+                // the $ in front of the string to summon the info is a "string interpolation"
+                Console.Write($"Can you guess the number I'm thinking of? You have ({ attemptsAllowed - 1}) guesses to get it right!  ");
+                string userResponse = Console.ReadLine();
+                int userNumber = int.Parse(userResponse);
                 Console.WriteLine($"Number guessed: {userNumber}");
+
+                // the code below is an example of a conditional
                 if (secretNumber == userNumber)
                 {
                     Console.WriteLine("SUCCESS! You got it, dude!");
@@ -32,10 +36,43 @@ namespace GuessingGame2
                     {
                         Console.WriteLine("Try guessing a little lower!");
                     }
-
+                    attempts++;
                 }
             }
+        }
 
+        static int GetNumberOfAttempts()
+        {
+            int attempts = 0;
+            while (attempts == 0)
+            {
+                Console.Write("What difficulty would you like to select? (easy, medium, hard)");
+                string userResponse = Console.ReadLine().ToLower();
+
+                switch (userResponse)
+                {
+                    case ("easy"):
+                        attempts = 8;
+                        break;
+
+                    case ("medium"):
+                        attempts = 6;
+                        break;
+
+                    case ("hard"):
+                        attempts = 4;
+                        break;
+
+                        // case ("cheater"):
+                        //     attempts = -1;
+                        //     break;
+
+                    default:
+                        break;
+                }
+            }
+            return attempts;
         }
     }
+
 }
